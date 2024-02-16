@@ -3,6 +3,7 @@ package com.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,12 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class EmployeesTest {
     private EmployeeRepositoryTestDouble employeeRepository ;
-    private BankServiceTestDouble bankService ;
+    private BankService bankService ;
     private Employees employees ;
     @BeforeEach
     void beforeEach() {
         employeeRepository = new EmployeeRepositoryTestDouble();
-        bankService = new BankServiceTestDouble();
+        bankService = Mockito.mock(BankService.class);
         employees = new Employees(employeeRepository, bankService);
 
     }
@@ -36,6 +37,7 @@ class EmployeesTest {
     @DisplayName("Fail to pay employees")
     void payEmployeesUnsuccessful() {
         employeeRepository.save(new Employee("Farbror", 10000.0));
+        Mockito.doThrow().when(bankService);
 
         int paid = employees.payEmployees();
 
