@@ -17,4 +17,9 @@ class CalculatorTest {
         assertEquals(3, Calculator.add("1,2"));
 
     }
+    @Test
+    void step2() {
+
+        assertEquals(12, Calculator.add("3,4,5"));
+    }
 }
