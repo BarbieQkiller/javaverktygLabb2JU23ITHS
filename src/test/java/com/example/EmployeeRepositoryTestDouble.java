@@ -7,7 +7,7 @@ import java.util.List;
  * @author Angela Gustafsson, anggus-1
  */
 public class EmployeeRepositoryTestDouble implements EmployeeRepository{
-    private List<Employee> employees = new ArrayList<>();
+    private final List<Employee> employees = new ArrayList<>();
     @Override
     public List<Employee> findAll() {
 
